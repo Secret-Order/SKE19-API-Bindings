@@ -1,5 +1,5 @@
 import requests
-from student import Student
+from .student import Student
 
 api_url = "https://ske19-api.herokuapp.com/"
 
@@ -7,7 +7,7 @@ api_url = "https://ske19-api.herokuapp.com/"
 class SKE19:
     """A client to access SKE19 API, must be initialized with a secret key.
     """
-    def __init__(self, secret, duration=3600):
+    def __init__(self, secret, duration="3600"):
         """Create instance to access SKE19 API, must have secret key provided.
 
         :param secret: Secret key for generating auth token.
@@ -40,7 +40,6 @@ class SKE19:
         res = _res.json()
         if _res.status_code == 404:
             return res["message"]
-        print(res)
         return Student(id,
                        res["firstNameEN"], res["lastNameEN"], res["nickEN"],
                        res["firstNameTH"], res["lastNameTH"], res["nickTH"],
