@@ -6,3 +6,8 @@
 venv/
 .venv/
 __pycache__/
+pyproject.toml
+setup.cfg
+setup.py
+python3/dist/
+python3/src/*.egg-info/
