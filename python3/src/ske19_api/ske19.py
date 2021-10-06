@@ -7,21 +7,23 @@ api_url = "https://ske19-api.herokuapp.com/"
 class SKE19:
     """A client to access SKE19 API, must be initialized with a secret key.
     """
-    def __init__(self, secret, duration="3600"):
+    def __init__(self, secret: str, duration: int = 3600):
         """Create instance to access SKE19 API, must have secret key provided.
 
         :param secret: Secret key for generating auth token.
         :type secret: str
+        :param duration: Duration for session.
+        :type duration: int
         :raises: ValueError: Secret key is incorrect.
         """
         res = requests.post(f"{api_url}auth", headers={"secret": secret,
-                            "duration": duration})
+                            "duration": str(duration)})
         if res.status_code == 403:
             raise ValueError('Cannot authorize the SKE19 client.',
                              f"Secret: {secret}")
         self.__token = res.json()["token"]
 
-    def get_student(self, id):
+    def get_student(self, id: str):
         """Get student information from student ID.
 
         :param id: Student ID
