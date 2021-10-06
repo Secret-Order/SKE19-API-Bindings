@@ -25,6 +25,7 @@ python3 -m pip install ske19-api
 
 In your Python script, you can create a new client to login to SKE19 API by, and replacing the secret key with the server's key to access the API.
 ```python
+from ske19 import SKE19
 session = SKE19(secret="secret-key", duration=3600)
 ```
 
